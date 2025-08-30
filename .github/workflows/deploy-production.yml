@@ -18,6 +18,8 @@ jobs:
 
   deploy:
     runs-on: ubuntu-24.04
+    env:
+      UV: ${{ secrets.UV_PATH }}
     needs: build
     steps:
       - name: Deploy via SSH
@@ -29,6 +31,7 @@ jobs:
           script: |
             echo "Deploying Instance"
             cd daolab-bot 
+            alias uv=${UV}
             uv sync
             uv run main.py >> log.txt
             
