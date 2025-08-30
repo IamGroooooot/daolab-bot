@@ -30,8 +30,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             echo "Deploying Instance"
-            cd daolab-bot 
-            alias uv=${UV}
-            uv sync
-            uv run main.py >> log.txt
+            cd ~
+            ./deploy.sh
             
